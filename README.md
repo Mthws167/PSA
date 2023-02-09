@@ -5,9 +5,9 @@ Aula 1
 
 Atividade individual:
 
-Arquitetura
-Designer
-Código
+<li>Arquitetura
+<li>Designer
+<li>Código
 
 ------------//////-------------------
 
