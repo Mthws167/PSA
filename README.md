@@ -9,7 +9,7 @@ Atividade individual:
 <li>Designer
 <li>Código
 
-------------//////-------------------
+<hr>
 
 Avaliações do 1º Trimestre
 
@@ -20,7 +20,7 @@ Avaliação pratica
 
 E caso necessário realizar a recuperação
 
-------------//////-------------------
+<hr>
 
 Plano de Ensino
 
@@ -31,7 +31,7 @@ Qualidade de projeto de software. Atributos de qualidade de projeto de software 
 de eventos, tratamento de exceções, persistência, distribuição, interação, etc). 
 Padrões de Projeto de Software. Prática de projeto de software..
 
-------------//////-------------------
+<hr>
 
 Email é o meio de contato oficial
 
@@ -41,14 +41,14 @@ Sabados letivos
 
 17/06 02/09
 
-------------//////-------------------
+<hr>
 
 Cuidado com as horas
 
 completar a carga horaria complementar ao curso
 palestras, doações, visitas tecnicas, estagio entre outras atividades
 
-------------//////-------------------
+<hr>
 
 Atendimento (Síncrono)
 
