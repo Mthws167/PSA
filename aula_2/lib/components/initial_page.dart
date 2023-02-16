@@ -7,7 +7,33 @@ class InitialPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('First page'),
+        title: Text('Títulos'),
+      ),
+      body: Center(
+        child: Column(
+          children: [
+            const TextField(
+              decoration: InputDecoration(
+                label: const Text('CPF'),
+                hintText: 'Informe o CPF',
+              ),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return const AlertDialog(
+                      title: Text('Resultado'),
+                      content: Text('CPF correto'),
+                    );
+                  },
+                );
+              },
+              child: const Text('ok'),
+            ),
+          ],
+        ),
       ),
     );
   }

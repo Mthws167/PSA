@@ -1,4 +1,4 @@
-/**
+/*
  * 1) - Códigos comentados apeas quando necessários;
  * 2) - Classes separadas em arquivos diferentes;
  * 3) - Nomes sugestivos;
