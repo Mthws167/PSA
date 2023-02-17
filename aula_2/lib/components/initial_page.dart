@@ -7,7 +7,7 @@ class InitialPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Títulos'),
+        title: appBarText('Título'),
       ),
       body: Center(
         child: Column(
@@ -37,4 +37,8 @@ class InitialPage extends StatelessWidget {
       ),
     );
   }
+}
+
+Widget appBarText(String title) {
+  return Text(title);
 }
