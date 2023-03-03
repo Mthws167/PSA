@@ -127,14 +127,18 @@ class PrimeiraPagina extends StatelessWidget {
     if (!cnpjCompleto.contains('.')) return 'CNPJ deve possuir "."!';
     if (!cnpjCompleto.contains('-')) return 'CNPJ deve possuir "-"!';
     if (!cnpjCompleto.contains('/')) return 'CNPJ deve possuir "/"!';
+    if (!cnpjCompleto.contains('0001')) return 'CNPJ deve possuir 0001 !';
     if (cnpjCompleto.length != 18) return 'CPF deve possuir 18 caracteres!';
-    var cnpjSemMascara = cnpjCompleto.replaceAll('.', '').replaceAll('/', '').replaceAll('-', '');
+    var cnpjSemMascara = cnpjCompleto
+        .replaceAll('.', '')
+        .replaceAll('/', '')
+        .replaceAll('-', '');
     var primeiroDigito = int.parse(cnpjSemMascara.substring(12, 13));
     var segundoDigito = int.parse(cnpjSemMascara.substring(13, 14));
     var numerosIguais = true;
 
     var cpfListaNumeros = cnpjSemMascara
-        .substring(0, 14)
+        .substring(0, 12)
         .split('')
         .map<int>((e) => int.parse(e))
         .toList();
@@ -149,25 +153,32 @@ class PrimeiraPagina extends StatelessWidget {
     }
 
     if (numerosIguais) return "CNPJ deve possuir números diferentes";
-    var peso = 13;
+    var peso = 5;
     var digitoCalculado = 0;
     for (var n in cpfListaNumeros) {
       digitoCalculado += peso * n;
       peso--;
+      if(peso == 1){
+        peso = 9;
+      }
+      
     }
-    digitoCalculado = 14 - (digitoCalculado % 14);
-    if (digitoCalculado > 12) digitoCalculado = 0;
+    digitoCalculado = 11 - (digitoCalculado % 11);
+    if (digitoCalculado > 9) digitoCalculado = 0;
     if (primeiroDigito != digitoCalculado) return "Primeiro Digito incorreto!";
 
     cpfListaNumeros.add(digitoCalculado);
-    peso = 14;
+    peso = 6;
     digitoCalculado = 0;
     for (var n in cpfListaNumeros) {
       digitoCalculado += peso * n;
       peso--;
+      if(peso == 1){
+        peso = 9;
+      }
     }
-    digitoCalculado = 14 - (digitoCalculado % 14);
-    if (digitoCalculado > 13) digitoCalculado = 0;
+    digitoCalculado = 11 - (digitoCalculado % 11);
+    if (digitoCalculado > 10) digitoCalculado = 0;
     if (segundoDigito != digitoCalculado) return "Segundo Digito incorreto!";
     return 'CNPJ válido';
   }
