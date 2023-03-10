@@ -1,4 +1,4 @@
-import 'package:aula_2/entidade/validar_cpf.dart';
+import 'package:aula_2/entidade/validar_cnpj.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 /**
@@ -9,47 +9,52 @@ import 'package:flutter_test/flutter_test.dart';
  */
 
 void main() {
-  test('CPF vazio deve gerar excessão', () {
-    String cpf = '';
-    var validarCPF = ValidarCPF();
-    expect(() => validarCPF.ehVazio(cpf), throwsException);
+  test('CNPJ vazio deve gerar excessão', () {
+    String cnpj = '';
+    var validarCNPJ = ValidarCNPJ();
+    expect(() => validarCNPJ.ehVazio(cnpj), throwsException);
   });
 
-  test('CPF com menos de 14 caracteres deve gerar excessão', () {
-    String cpf = '111.111.111';
-    var validarCPF = ValidarCPF();
-    expect(() => validarCPF.tamanhoCorreto(cpf), throwsException);
+  test('CNPJ com menos de 18 caracteres deve gerar excessão', () {
+    String cnpj = '07.943.476/000105';
+    var validarCNPJ = ValidarCNPJ();
+    expect(() => validarCNPJ.tamanhoCorreto(cnpj), throwsException);
   });
 
-  test('CPF com não possui formato correto', () {
-    String cpf = '111.111.11111';
-    var validarCPF = ValidarCPF();
-    expect(() => validarCPF.formatoCorreto(cpf), throwsException);
+  test('CNPJ com não possui formato correto', () {
+    String cnpj = '07.943.476/0001-05';
+    var validarCNPJ = ValidarCNPJ();
+    expect(() => validarCNPJ.formatoCorreto(cnpj), throwsException);
   });
 
-  test('CPF sem formatação possui 9 dígitos', () {
-    String cpf = '111.111.111-11';
-    var validarCPF = ValidarCPF();
-    List<int> listaNumeroCpf = validarCPF.gerarListaNumero(cpf);
-    expect(listaNumeroCpf.length, 9);
-    cpf = '111';
+  test('CNPJ sem formatação possui 12 dígitos', () {
+    String cnpj = '07.943.476/0001-05';
+    var validarCNPJ = ValidarCNPJ();
+    List<int> listaNumeroCnpj = validarCNPJ.gerarListaNumero(cnpj);
+    expect(listaNumeroCnpj.length, 12);
   });
 
-  test('Segundo dígito do CPF correto', () {
-    String cpf = '108.741.389-30';
-    var validarCPF = ValidarCPF();
-    expect(validarCPF.segundoDigito(cpf), 0);
+  test('Primeiro dígito do CNPJ correto', () {
+    String cnpj = '07.943.476/0001-05';
+    var validarCNPJ = ValidarCNPJ();
+    expect(validarCNPJ.primeiroDigito(cnpj), 0);
   });
 
-  test('Dois dígitos do CPF corretos', () {
-    String cpf = '108.741.389-30';
-    var validarCPF = ValidarCPF();
-    expect(validarCPF.validarDigitos(cpf), '30');
+  test('Segundo dígito do CNPJ correto', () {
+    String cnpj = '07.943.476/0001-05';
+    var validarCNPJ = ValidarCNPJ();
+    expect(validarCNPJ.segundoDigito(cnpj), 5);
   });
 
-  test('CPF não possui números iguais', () {
-    String cpf = '108.741.389-30';
-    var validarCPF = ValidarCPF();
-    expect(validarCPF.naoPossuiNumerosIguais(cpf), false);
+  test('Dois dígitos do CNPJ corretos', () {
+    String cnpj = '07.943.476/0001-05';
+    var validarCNPJ = ValidarCNPJ();
+    expect(validarCNPJ.validarDigitos(cnpj), '05');
+  });
+
+  test('CNPJ não possui números iguais', () {
+    String cnpj = '07.943.476/0001-05';
+    var validarCNPJ = ValidarCNPJ();
+    expect(validarCNPJ.naoPossuiNumerosIguais(cnpj), false);
   });
 }

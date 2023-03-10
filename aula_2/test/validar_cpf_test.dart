@@ -35,6 +35,12 @@ void main() {
     cpf = '111';
   });
 
+  test('Primeiro dígito do CPF correto', () {
+    String cpf = '108.741.389-30';
+    var validarCPF = ValidarCPF();
+    expect(validarCPF.primeiroDigito(cpf), 3);
+  });
+
   test('Segundo dígito do CPF correto', () {
     String cpf = '108.741.389-30';
     var validarCPF = ValidarCPF();
