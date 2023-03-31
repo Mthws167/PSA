@@ -2,25 +2,27 @@ import 'package:contador_gorjeta/controle/conta_total.dart';
 import 'package:contador_gorjeta/entidade/conta.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-// >>A gorjeta não é obrigatória.
+// >>A gorjeta não é obrigatória. FEITO
 
-// >>A gorjeta deve ter valor mínimo de 5% do valor da conta e o valor máximo de 30% do valor da conta, quando oferecida.
+// >>A gorjeta deve ter valor mínimo de 5% do valor da conta e o valor máximo de 30% do valor da conta, quando oferecida. FEITO
+
+// >>A gorjeta, quando oferecida, não deverá ser negativa. FEITO
 
 // >> A avaliação do cliente não é obrigatória.
-
-// >>A gorjeta deve ser relacionada apenas a um atendente.
-
-// >>A gorjeta quando não há atendente relacionado, deve ser distribuída a todos funcionários.
 
 // >>O cliente poderá realizar avaliação por meios de estrelas.
 
 // >>A avaliação do cliente deve ter no máximo 5 estrelas e  no mínimo 0 estrelas, quando oferecido.
 
+// >>A gorjeta deve ser relacionada apenas a um atendente.
+
+// >>A gorjeta quando não há atendente relacionado, deve ser distribuída a todos funcionários.
+
 // >>O atendente pode ser fixo ou temporário.
 
 // >>A gorjeta deve ser adicionada a diária do atendente que está relacionado.
 
-// >>A gorjeta, quando oferecida, não deverá ser negativa.
+
 
 void main() {
   test("Gorjeta não é obrigatória", () {
@@ -32,8 +34,12 @@ void main() {
   });
 
   test("A gorjeta deve ter valor mínimo de 5% do valor da conta e o valor máximo de 30% do valor da conta, quando oferecida.", () {
-    expect(ContaTotal().gorjetaMinima(3.5), 0.0);
-    expect(ContaTotal().gorjetaMinima(0.5), 5.0);
-    expect(ContaTotal().gorjetaMinima(3), 30.0);
+    expect(ContaTotal().gorjetaMinimaMaxima(3.5), 0.0);
+    expect(ContaTotal().gorjetaMinimaMaxima(0.5), 5.0);
+    expect(ContaTotal().gorjetaMinimaMaxima(3), 30.0);
+  });
+
+  test("A avaliação do cliente não é obrigatória.",(){
+    expect(()=>Avaliacao().avaliacaoExiste(null), returnsNormally);
   });
 }
