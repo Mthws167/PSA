@@ -1,6 +1,10 @@
+import 'atendente.dart';
+
 class Avaliacao{
-  
-  late int estrelas;
-  late Atendente atendente;
+  final String nome = "Estrelas";
+  final int estrelas;
+  final Atendente? atendente;
+
+  Avaliacao({required  this.atendente, required this.estrelas});
 
 }

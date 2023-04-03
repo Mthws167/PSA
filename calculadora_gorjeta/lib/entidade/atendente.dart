@@ -1,6 +1,8 @@
 class Atendente {
 
-  late String nome;
-  late double salario;
+  final String nome;
+  final double salario;
+
+  Atendente({required this.nome, required this.salario});
 
 }

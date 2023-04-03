@@ -1,6 +1,11 @@
+import 'gorjeta.dart';
+import 'avaliacao.dart';
+
 class Cliente {
 
-  late Gorjeta gorjeta;
-  late Avaliacao avaliação;
-  
+  final String nome;
+  final Gorjeta? gorjeta;
+  final Avaliacao? avaliacao;
+
+  Cliente({required this.nome, required this.avaliacao, required this.gorjeta});
 }

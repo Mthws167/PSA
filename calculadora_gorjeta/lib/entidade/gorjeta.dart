@@ -1,5 +1,10 @@
+import 'atendente.dart';
+
 class Gorjeta {
 
-  late double valor;
+  final double valor;
+  final Atendente? atendente;
+
+  Gorjeta({required this.atendente, required this.valor});
   
 }
