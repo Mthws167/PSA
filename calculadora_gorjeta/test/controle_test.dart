@@ -56,7 +56,7 @@ void main() {
 
   test("O cliente poderá realizar avaliação por meios de estrelas.",(){
     Cliente cliente = Cliente(nome: "Matheus", avaliacao: Avaliacao(atendente: Atendente(nome: "Júlio", salario: 1350), estrelas: 1), gorjeta: null);
-    expect(()=>Controle().avaliacaoExiste(cliente.avaliacao?.nome), "Estrelas");
+    expect(Controle().avaliacaoPorEstrela(cliente.avaliacao?.nome), "Estrelas");
   });
 
   test("A avaliação do cliente deve ter no máximo 5 estrelas e  no mínimo 0 estrelas, quando oferecido.", () {
@@ -64,7 +64,7 @@ void main() {
     Cliente cliente1 = Cliente(nome: "Matheus", avaliacao: Avaliacao(atendente: Atendente(nome: "Júlio", salario: 1250), estrelas: 3), gorjeta: null);
     Cliente cliente2 = Cliente(nome: "Matheus", avaliacao: Avaliacao(atendente: Atendente(nome: "Júlio", salario: 1250), estrelas: 6), gorjeta: null);
     expect(Controle().avaliacaoMinima(cliente.avaliacao?.estrelas), 0);
-    expect(Controle().avaliacaoMinima(cliente1.avaliacao?.estrelas), 2);
+    expect(Controle().avaliacaoMinima(cliente1.avaliacao?.estrelas), 3);
     expect(Controle().avaliacaoMaxima(cliente2.avaliacao?.estrelas), 5);
   });
 
@@ -77,7 +77,7 @@ void main() {
 
   test("A gorjeta deve ser adicionada a diária do atendente que está relacionado.", () {
     Cliente cliente = Cliente(nome: "Matheus", avaliacao: null, gorjeta: Gorjeta(atendente: Atendente(nome: "Júlio", salario: 1250), valor: 3.0));
-    expect(Controle().gorjetaAtendente(cliente.gorjeta, cliente.gorjeta?.atendente?.salario), 1253);
+    expect(Controle().gorjetaAtendente(cliente.gorjeta?.valor, cliente.gorjeta?.atendente?.salario), 1253);
   });
 
   test("O atendente pode ser fixo ou temporário.",(){
@@ -90,7 +90,7 @@ void main() {
   test("A gorjeta quando não há atendente relacionado, deve ser distribuída a todos funcionários.",(){
     AtendenteFixo atendenteFixo = AtendenteFixo(nome: "João", salario: 2000.0);
     AtendenteTemporario atendenteTemporario = AtendenteTemporario(nome: "Maria", salario: 1500.0);
-    List<Atendente> atendentes = [atendenteFixo, atendenteTemporario];
+    var atendentes = [atendenteFixo, atendenteTemporario];
     Cliente cliente1 = Cliente(nome: "Matheus", avaliacao: null, gorjeta: Gorjeta(atendente: null, valor: 3.0));
     expect(Controle().distribuirGorjeta(atendentes,cliente1),1.5);
 
