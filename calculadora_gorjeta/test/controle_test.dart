@@ -1,6 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
 import '../lib/controle/controle.dart';
 import '../lib/entidade/atendente.dart';
+import '../lib/entidade/atendente_fixo.dart';
+import '../lib/entidade/atendente_temporario.dart';
 import '../lib/entidade/avaliacao.dart';
 import '../lib/entidade/cliente.dart';
 import '../lib/entidade/gorjeta.dart';
@@ -19,9 +21,9 @@ import '../lib/entidade/gorjeta.dart';
 
 // >>A gorjeta e a avaliação deve ser relacionada apenas a um atendente. (FEITO)
 
-// >>A gorjeta quando não há atendente relacionado, deve ser distribuída a todos funcionários.
+// >>A gorjeta quando não há atendente relacionado, deve ser distribuída a todos funcionários. (FEITO)
 
-// >>O atendente pode ser fixo ou temporário.
+// >>O atendente pode ser fixo ou temporário. (FEITO)
 
 // >>A gorjeta deve ser adicionada a diária do atendente que está relacionado.(FEITO)
 
@@ -76,5 +78,21 @@ void main() {
   test("A gorjeta deve ser adicionada a diária do atendente que está relacionado.", () {
     Cliente cliente = Cliente(nome: "Matheus", avaliacao: null, gorjeta: Gorjeta(atendente: Atendente(nome: "Júlio", salario: 1250), valor: 3.0));
     expect(Controle().gorjetaAtendente(cliente.gorjeta, cliente.gorjeta?.atendente?.salario), 1253);
+  });
+
+  test("O atendente pode ser fixo ou temporário.",(){
+    AtendenteFixo atendenteFixo = AtendenteFixo(nome: "João", salario: 2000.0);
+    AtendenteTemporario atendenteTemporario = AtendenteTemporario(nome: "Maria", salario: 1500.0);
+    expect(Controle().atendenteFixo(atendenteFixo), true);
+    expect(Controle().atendenteTemporario(atendenteTemporario), true);
+  });
+
+  test("A gorjeta quando não há atendente relacionado, deve ser distribuída a todos funcionários.",(){
+    AtendenteFixo atendenteFixo = AtendenteFixo(nome: "João", salario: 2000.0);
+    AtendenteTemporario atendenteTemporario = AtendenteTemporario(nome: "Maria", salario: 1500.0);
+    List<Atendente> atendentes = [atendenteFixo, atendenteTemporario];
+    Cliente cliente1 = Cliente(nome: "Matheus", avaliacao: null, gorjeta: Gorjeta(atendente: null, valor: 3.0));
+    expect(Controle().distribuirGorjeta(atendentes,cliente1),1.5);
+
   });
 }
