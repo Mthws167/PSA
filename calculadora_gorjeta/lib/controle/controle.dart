@@ -6,6 +6,7 @@ import '../entidade/atendente.dart';
 import '../entidade/cliente.dart';
 
 class Controle {
+  // Gorjeta
   void gorjetaExiste(gorjeta) {
     return gorjeta;
   }
@@ -50,7 +51,7 @@ class Controle {
     double valorPorAtendente = valorGorjeta! / qtdAtendentes;
     double valorRecebidoPorAtendente = 0.0;
     if (valorGorjeta != null && valorGorjeta != 0.0) {
-        valorRecebidoPorAtendente += valorPorAtendente;
+      valorRecebidoPorAtendente += valorPorAtendente;
     }
     return valorRecebidoPorAtendente;
   }
