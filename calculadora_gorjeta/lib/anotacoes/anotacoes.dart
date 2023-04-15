@@ -1,19 +1,19 @@
 /**
  * POO:
  * 
- * Encapsulamento: as variáveis de cada classe são definidas como "final", indicando que seus valores não podem ser alterados depois que são definidos.
+ * Encapsulamento: aplicado no método "gorjetaMinima", onde encapsula o valor da gorjeta e verifica seu valor mínimo.
  * 
  * Herança: a classe AtendenteTemporario e AtendenteFixo herdam atributos e métodos da classe Atendente.
  * 
- * Polimorfismo: a classe Controle contém métodos que podem ser aplicados a objetos de diferentes classes, como "gorjetaAtendente" e "distribuirGorjeta".
+ * Polimorfismo: o método "gorjetaAtendente" é um exemplo já que trata o "atendenteFixo" e o "atendenteTemporario" de formas diferentes 
  * 
- * Abstração: na classe Cliente, são definidos atributos como "nome", "avaliacao" e "gorjeta", que representam as informações essenciais de um cliente no contexto do sistema.
+ * Abstração: os métodos descritos nas Classes "Gorjeta","Avaliacao","AtendenteTemporario" e "AtendenteFixo"  identificam comportamentos essenciais de um objeto e representá-los em uma classe.
  * 
  * 
  * 
  * SOLID:
  * 
- * SRP (Single Responsibility Principle): uma classe deve ter apenas uma única responsabilidade.
+ * SRP (Single Responsibility Principle): uma classe deve ter apenas uma única responsabilidade (Aplicado nas Classes "Gorjeta" e "Avaliação").
  * 
  * OCP (Open-Closed Principle): uma vez que permitem a extensão sem modificação da classe "Atendente".
  * 

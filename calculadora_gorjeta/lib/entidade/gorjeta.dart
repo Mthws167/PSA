@@ -7,12 +7,13 @@ class Gorjeta {
 
   Gorjeta({required this.atendente, required this.valor});
 
-  //Encapsulamento
+  
   double gorjetaNegativa(gorjeta) {
     if (gorjeta < 0) gorjeta = 0.0;
     return gorjeta;
   }
 
+  //Encapsulamento
   double gorjetaMinima(gorjeta) {
     var valorConta = 10;
     var porcentagemGorjeta = (gorjeta * 100) / valorConta;
