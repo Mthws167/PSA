@@ -6,7 +6,7 @@ class AtendenteTemporario extends Atendente {
 
   AtendenteTemporario({required super.nome, required super.salario});
 
-  bool atendenteTemporario(atendenteTemporario) {
+  bool atendenteTemporario(AtendenteTemporario atendenteTemporario) {
     if (atendenteTemporario == AtendenteFixo) {
       return false;
     }

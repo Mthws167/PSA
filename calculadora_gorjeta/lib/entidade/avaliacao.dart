@@ -7,17 +7,17 @@ class Avaliacao{
 
   Avaliacao({required  this.atendente, required this.estrelas});
 
-  String avaliacaoPorEstrela(avaliacao) {
-    return avaliacao;
+  String avaliacaoPorEstrela( String avaliacaoNome) {
+    return avaliacaoNome;
   }
 
-  int avaliacaoMinima(avaliacao) {
+  int avaliacaoMinima(int avaliacao) {
     if (avaliacao <= 0) avaliacao = 0;
 
     return avaliacao;
   }
 
-  int avaliacaoMaxima(avaliacao) {
+  int avaliacaoMaxima( int avaliacao) {
     if (avaliacao >= 5) avaliacao = 5;
 
     return avaliacao;

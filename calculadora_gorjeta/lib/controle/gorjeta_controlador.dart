@@ -1,5 +1,6 @@
 import '../entidade/atendente.dart';
 import '../entidade/cliente.dart';
+import '../entidade/gorjeta.dart';
 
 class GorjetaControlador {
   double gorjetaNegativa(double gorjeta) {
@@ -40,9 +41,9 @@ class GorjetaControlador {
     return salarioAtendente;
   }
 
-  double distribuirGorjeta(List<Atendente> atendentes, Cliente cliente) {
+  double distribuirGorjeta(List<Atendente> atendentes, Gorjeta gorjeta) {
     int qtdAtendentes = atendentes.length;
-    double? valorGorjeta = cliente.gorjeta?.valor;
+    double? valorGorjeta = gorjeta?.valor;
     double valorPorAtendente = valorGorjeta! / qtdAtendentes;
     double valorRecebidoPorAtendente = 0.0;
     if (valorGorjeta != null && valorGorjeta != 0.0) {

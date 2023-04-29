@@ -3,24 +3,29 @@ import 'package:contador_gorjeta/entidade/atendente_temporario.dart';
 import 'package:flutter/material.dart';
 
 import '../entidade/atendente.dart';
+import '../entidade/avaliacao.dart';
 import '../entidade/cliente.dart';
+import '../entidade/gorjeta.dart';
 
 class Controle {
   // Gorjeta
-  void gorjetaExiste(gorjeta) {
-    return gorjeta;
+  bool gorjetaExiste(Gorjeta gorjeta) {
+    if (gorjeta.valor > 0 && gorjeta.valor != null) {
+      return true;
+    }
+    return false;
   }
 
-  double gorjetaAtendente(gorjeta, salarioAtendente) {
+  double gorjetaAtendente(double gorjeta, double salarioAtendente) {
     if (gorjeta != null) {
       salarioAtendente += gorjeta;
     }
     return salarioAtendente;
   }
 
-  double distribuirGorjeta(atendentes, cliente) {
+  double distribuirGorjeta(atendentes, Gorjeta gorjeta) {
     int qtdAtendentes = atendentes.length;
-    double? valorGorjeta = cliente.gorjeta?.valor;
+    double? valorGorjeta = gorjeta?.valor;
     double valorPorAtendente = valorGorjeta! / qtdAtendentes;
     double valorRecebidoPorAtendente = 0.0;
     if (valorGorjeta != null && valorGorjeta != 0.0) {
@@ -31,11 +36,14 @@ class Controle {
 
   // Avaliação
 
-  void avaliacaoExiste(avaliacao) {
-    return avaliacao;
+  bool avaliacaoExiste(Avaliacao avaliacao) {
+    if (avaliacao.estrelas > 0 && avaliacao.estrelas != null) {
+      return true;
+    }
+    return false;
   }
 
-  bool gorjetaAvaliacaoAtendente(avaliacaoAtendente, gorjetaAtendente) {
+  bool gorjetaAvaliacaoAtendente(String avaliacaoAtendente, String gorjetaAtendente) {
     if (avaliacaoAtendente == gorjetaAtendente) {
       return true;
     }
